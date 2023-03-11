@@ -7,6 +7,10 @@ import java.util.*;
 
 public class TreeMapper {
 
+    // Если TreeEntity - это не сущности БД или если в БД есть места, которые нарушают условия целостности БД, то нужно
+    // вводить дополнительные проверки на то, что id != null.
+    // Или если у какой-то ноды есть parentId, который на самом деле не существует в списке нод, то одного прохода не хватит.
+    // Также есть вариант присутствия циклов и петель.
     public static Collection<TreeDTO> convert(Collection<TreeEntity> entities) {
         if (entities == null) {
             throw new IllegalArgumentException("Parameter 'entities' cannot be null");
